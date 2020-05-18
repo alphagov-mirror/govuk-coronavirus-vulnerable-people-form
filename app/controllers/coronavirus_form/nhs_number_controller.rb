@@ -18,9 +18,11 @@ class CoronavirusForm::NhsNumberController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
+      session[:know_nhs_number] = I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
       session[:nhs_number] = @form_responses[:nhs_number]
       redirect_to check_your_answers_url
     else
+      session[:know_nhs_number] = I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
       session[:nhs_number] = @form_responses[:nhs_number]
       redirect_to essential_supplies_url
     end

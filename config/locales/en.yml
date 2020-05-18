@@ -357,6 +357,10 @@ en:
           label: "Phone number (for text messages)"
         email:
           label: "Email address"
+      know_nhs_number:
+        options:
+          option_yes:
+            label: "Yes, I know my NHS number"
       nhs_number:
         title: What is your NHS number?
         hint: |
