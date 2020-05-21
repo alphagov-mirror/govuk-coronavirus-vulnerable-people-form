@@ -1,4 +1,6 @@
 module AnswersHelper
+  SKIPPABLE_QUESTIONS = %w[carry_supplies dietary_requirements medical_conditions nhs_number].freeze
+
   def answer_items
     answers = questions.map do |question|
       answer = concat_answer(session[question], question)
@@ -17,7 +19,7 @@ module AnswersHelper
   end
 
   def skip_question?(question, answer)
-    question.in?(%w[nhs_number medical_conditions]) && answer.nil?
+    question.in?(SKIPPABLE_QUESTIONS) && answer.nil?
   end
 
   def concat_answer(answer, question)
