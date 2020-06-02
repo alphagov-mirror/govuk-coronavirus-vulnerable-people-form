@@ -97,6 +97,9 @@
         "postcode": {
           "type": "string",
           "pattern": "^[A-Za-z0-9 ]{4,}$"
+        },
+        "uprn": {
+          "type": ["string", "null"]
         }
       }
     },
