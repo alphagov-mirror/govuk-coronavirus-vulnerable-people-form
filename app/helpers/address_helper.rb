@@ -123,4 +123,19 @@ module AddressHelper
 
     sanitized_edited_address & sanitized_ordnance_address == sanitized_ordnance_address
   end
+
+  def remove_selected_address_changes(selected_address)
+    address_hash = JSON.parse(selected_address).to_h
+    selected_address_keys = address_hash.keys
+
+    address_to_return = address_hash.select do |key, value|
+      WANTED_VALUES.include?(key) && value.instance_of?(String)
+    end
+
+    unless address_to_return.keys == selected_address_keys
+      address_to_return.delete("UPRN")
+    end
+
+    address_to_return
+  end
 end
